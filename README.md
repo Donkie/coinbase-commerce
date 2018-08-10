@@ -1,4 +1,4 @@
-coinbase-commerce-php-sdk
+coinbase-commerce
 =================================
 
 This SDK is a way to simplify the usage of Coinbase Commerce REST API for your web application.
@@ -21,10 +21,10 @@ The following are the endpoints available
     POST /api/checkout
     GET /api/checkout
 
-Instalation
+Installation
 -----------
 
-The coinbase-commerce-php-sdk is available at GitHub. 
+The coinbase-commerce is available at GitHub. 
 It requires [PHP Guzzle](http://docs.guzzlephp.org/en/latest/) and PHP 5.6 or later.
 
 You will need to use [Composer](https://getcomposer.org/) to install
@@ -33,7 +33,7 @@ dependencies. Assuming you already have Composer:
 ### Via Composer command
 
 ```bash
-$ composer require codename065/coinbase-commerce-php-sdk
+$ composer require codename065/coinbase-commerce
 ```
 
 ### Via Composer update/install
@@ -44,7 +44,7 @@ To use the Coinbase Commerce PHP SDK from Composer:
 ```json
 {
     "require": {
-        "codename065/coinabse-commerce": "*"
+        "codename065/coinbase-commerce": "*"
     }
 }
 ```
@@ -88,7 +88,7 @@ require_once ('vendor/autoload.php');
 
 // Create a client
 $client = new \WPDMPP\Coinbase\Commerce\Client();
-$client->setApiKey('{your API Key}')
+$client->setApiKey('your API Key');
 
 // Prepare the charge
 $charge = new \WPDMPP\Coinbase\Commerce\Model\Charge();
@@ -102,7 +102,7 @@ $charge->setName('$5 Talk Credits');
 $charge->setDescription('Talk to Anyone, Anytime!');
 $charge->setPricingType('fixed_price');
 $charge->setLocalPrice($money);
-$charge->setRedirectUrl('{https://your.site.com}');
+$charge->setRedirectUrl('https://your.site.com');
 
 try{
     // Create the request and get back Coinbase Commerce response
@@ -111,9 +111,13 @@ try{
     echo $ex->getMessage();
 }
 
-// Print response
-echo ($response);
+$responseObj = json_decode($response);
 
+// Print response
+echo $response;
+
+// Print gateway URL (redirect the customer here)
+echo "Payment Gateway URL: " . $responseObj->data->hosted_url;
 ```
 ### Hosted URL
 ![](https://s3.amazonaws.com/ntedata/svn/coinbasecommerce_sdk1.png)
