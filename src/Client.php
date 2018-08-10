@@ -15,6 +15,10 @@ class Client {
      */
     const URL_PRODUCTION = 'https://api.commerce.coinbase.com';
 
+    /**
+     * @var string Coinbase Commerce API Version
+     */
+    const API_VERSION = '2018-03-22';
 
         /**
      * Http Guzzle Client
@@ -120,7 +124,8 @@ class Client {
         
         $guzzleOptions = array_merge($options, [
             \GuzzleHttp\RequestOptions::HEADERS => [
-                    'X-CC-Api-Key' => $this->auth
+                    'X-CC-Api-Key' => $this->auth,
+                    'X-CC-Version' => self::API_VERSION
             ]
         ]);
         
