@@ -18,7 +18,7 @@ class Charge {
      *
      * @var string 
      */
-    protected $name;
+    public $name;
 
     /**
      * Description
@@ -26,7 +26,7 @@ class Charge {
      *
      * @var string 
      */
-    protected $description;
+    public $description;
 
     /**
      * Pricing Type
@@ -34,7 +34,7 @@ class Charge {
      *
      * @var string 
      */
-    protected $pricing_type;
+    public $pricing_type;
 
     /**
      * Local price
@@ -42,7 +42,7 @@ class Charge {
      *
      * @var money 
      */
-    protected $local_price;
+    public $local_price;
 
     /**
      * Redirect url
@@ -50,7 +50,7 @@ class Charge {
      *
      * @var string 
      */
-    protected $redirect_url;
+    public $redirect_url;
 
     /**
      * Metadata
@@ -58,7 +58,7 @@ class Charge {
      *
      * @var array
      */
-    protected $metadata;
+    public $metadata;
 
     /**
      * Get name
