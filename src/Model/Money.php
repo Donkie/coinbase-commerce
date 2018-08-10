@@ -28,6 +28,17 @@ class Money {
     public $currency;
 
     /**
+     * Money constructor.
+     * @param string $amount
+     * @param string $currency
+     */
+    public function __construct($amount, $currency)
+    {
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
+
+    /**
      * Get amount
      * 
      * @return string
