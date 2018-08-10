@@ -33,10 +33,13 @@ class Client {
     private $auth;
 
 
-    
+    /**
+     * Client constructor.
+     * @param string $environment UNUSED
+     */
     public function __construct($environment = 'production'){
         
-        $this->_url = ($environment === 'production')? self::URL_PRODUCTION : self::URL_DEVELOPMENT;
+        $this->_url = self::URL_PRODUCTION;
         
         $this->_client = new \GuzzleHttp\Client();
         
