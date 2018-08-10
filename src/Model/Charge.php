@@ -53,6 +53,14 @@ class Charge {
     protected $redirect_url;
 
     /**
+     * Metadata
+     * User-specified metadata
+     *
+     * @var array
+     */
+    protected $metadata;
+
+    /**
      * Get name
      * 
      * @return string
@@ -95,6 +103,15 @@ class Charge {
      */
     public function getRedirectUrl() {
         return $this->redirect_url;
+    }
+
+    /**
+     * Get metadata
+     *
+     * @return array
+     */
+    public function getMetadata() {
+        return $this->metadata;
     }
 
 
@@ -150,6 +167,18 @@ class Charge {
      */
     public function setRedirectUrl($redirect_url){
         $this->redirect_url = $redirect_url;
+        return $this;
+    }
+
+    /**
+     * Set metadata
+     *
+     * @param array $metadata
+     * @return Charge
+     */
+    public function setMetadata($metadata)
+    {
+        $this->metadata = $metadata;
         return $this;
     }
 
