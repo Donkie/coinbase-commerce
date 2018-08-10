@@ -18,7 +18,7 @@ class Charge {
      *
      * @var string 
      */
-    public $name;
+    protected $name;
 
     /**
      * Description
@@ -26,7 +26,7 @@ class Charge {
      *
      * @var string 
      */
-    public $description;
+    protected $description;
 
     /**
      * Pricing Type
@@ -34,7 +34,7 @@ class Charge {
      *
      * @var string 
      */
-    public $pricing_type;
+    protected $pricing_type;
 
     /**
      * Local price
@@ -42,7 +42,7 @@ class Charge {
      *
      * @var money 
      */
-    public $local_price;
+    protected $local_price;
 
     /**
      * Redirect url
@@ -50,7 +50,7 @@ class Charge {
      *
      * @var string 
      */
-    public $redirect_url;
+    protected $redirect_url;
 
     /**
      * Get name
@@ -82,7 +82,7 @@ class Charge {
     /**
      * Get local price
      * 
-     * @return \WPDMPP\Coinbase\Commerce\Model\Money
+     * @return Money
      */
     public function getLocalPrice() {
         return json_encode($this->local_price);
@@ -134,10 +134,10 @@ class Charge {
     /**
      * Set local price
      *
-     * @param \WPDMPP\Coinbase\Commerce\Model\Money $local_price
+     * @param Money $local_price
      * @return $this
      */
-    public function setLocalPrice(\WPDMPP\Coinbase\Commerce\Model\Money $local_price){
+    public function setLocalPrice(Money $local_price){
         $this->local_price = $local_price;
         return $this;
     }

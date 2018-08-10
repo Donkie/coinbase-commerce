@@ -1,6 +1,8 @@
 <?php
 namespace WPDMPP\Coinbase\Commerce;
 
+use WPDMPP\Coinbase\Commerce\Model\Charge;
+
 /**
  * Http Client to handle communications with Coinbase Commerce Rest API
  *
@@ -61,8 +63,8 @@ class Client {
      * POST API request
      * 
      * @param string $endpoint Endpoint to call
-     * @param string $body
-     * @param array $query
+     * @param string|array|object $body
+     * @param array $query UNUSED
      * @return string|null json response content
      * 
      * @throws \GuzzleHttp\Exception\RequestException
@@ -70,10 +72,14 @@ class Client {
      * @throws \GuzzleHttp\Exception\TransferException
      */
     public function post($endpoint, $body = null, $query = []){
-        
-        $options = [
-            'form_params' => is_null($body)?null:((is_string($body))?$body:(array)$body)
-        ];
+
+        if(is_null($body)){
+            $options = [];
+        }else{
+            $options = [
+                'form_params' => is_string($body) ? $body : (array)$body
+            ];
+        }
 
         
         return $this->request('POST', $endpoint, $options);
@@ -131,7 +137,7 @@ class Client {
     /**
      * List all Charges
      * 
-     * @param int $page 
+     * @param int $page UNUSED
      * @return string|null json response content pagination
      */
     public function listCharges($page=null){
@@ -153,10 +159,10 @@ class Client {
     /**
      * Create charge
      * 
-     * @param \WPDMPP\Coinbase\Commerce\Model\Charge $charge
+     * @param Charge $charge
      * @return string|null json response content
      */
-    public function createCharge(\WPDMPP\Coinbase\Commerce\Model\Charge $charge){
+    public function createCharge(Charge $charge){
 
         return $this->post("charges",$charge);
     }
