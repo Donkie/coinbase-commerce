@@ -147,7 +147,7 @@ class WebhookListener
      */
     private function verifySignature($payload, $signature, $secret)
     {
-        return hash_equals(hash_hmac("sha512", $payload, $secret), $signature);
+        return hash_equals(hash_hmac("sha256", $payload, $secret), $signature);
     }
 
     /**
