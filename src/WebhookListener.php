@@ -102,12 +102,12 @@ class WebhookListener
         }
 
         if (!empty($this->webhook_secret)) {
-            if (!isset($_SERVER["HTTP_X-CC-Webhook-Signature"])) {
+            if (!isset($_SERVER["HTTP_X_CC_Webhook_Signature"])) {
                 $this->last_error = "X-CC-Webhook-Signature header not found.";
                 return false;
             }
 
-            $signature = $_SERVER["HTTP_X-CC-Webhook-Signature"];
+            $signature = $_SERVER["HTTP_X_CC_Webhook_Signature"];
             if (!$this->verifySignature($payload, $signature, $this->webhook_secret)) {
                 $this->last_error = "Couldn't verify payload HMAC with sent header signature.";
                 return false;
