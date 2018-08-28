@@ -2,7 +2,7 @@
 
 namespace WPDMPP\Coinbase\Commerce;
 
-use WPDMPP\Coinbase\Commerce\Model\Event;
+use WPDMPP\Coinbase\Commerce\Model\EventResource;
 
 if (!function_exists('hash_equals')) {
     function hash_equals($str1, $str2)
@@ -43,7 +43,7 @@ class WebhookListener
     protected $attempt_number;
     /**
      * Parsed event from the payload
-     * @var Event
+     * @var EventResource
      */
     protected $event;
     /**
@@ -77,7 +77,7 @@ class WebhookListener
     }
 
     /**
-     * @return Event
+     * @return EventResource
      */
     public function getEvent()
     {
@@ -124,7 +124,7 @@ class WebhookListener
 
         if (isset($data["event"])) {
             try {
-                $this->event = new Event($data["event"]);
+                $this->event = new EventResource($data["event"]);
             } catch (\Exception $e) {
                 $this->last_error = "Failed to parse event payload: {$e->getMessage()}";
                 return false;

@@ -5,7 +5,7 @@ namespace WPDMPP\Coinbase\Commerce\Model;
 
 use WPDMPP\Coinbase\Commerce\Util;
 
-class Event
+class EventResource
 {
     /**
      * Event UUID
@@ -20,7 +20,7 @@ class Event
      */
     protected $resource;
     /**
-     * Event type, one of ("charge:created", "charged:confirmed", "charge:delayed" or "charge:failed")
+     * Event type, one of ("charge:created", "charge:confirmed", "charge:delayed" or "charge:failed")
      *
      * @var string
      */
