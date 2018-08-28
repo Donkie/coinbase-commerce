@@ -116,22 +116,26 @@ class ChargeResource
      */
     public function __construct($chargeObj)
     {
-        $this->id = $chargeObj["id"];
+        if(isset($chargeObj["id"]))
+            $this->id = $chargeObj["id"];
         $this->resource = $chargeObj["resource"];
         $this->code = $chargeObj["code"];
         $this->name = $chargeObj["name"];
         $this->description = $chargeObj["description"];
-        $this->logo_url = $chargeObj["logo_url"];
+        if(isset($chargeObj["logo_url"]))
+            $this->logo_url = $chargeObj["logo_url"];
         $this->hosted_url = $chargeObj["hosted_url"];
         $this->created_at = Util::parseZuluTimeString($chargeObj["created_at"]);
         $this->expires_at = Util::parseZuluTimeString($chargeObj["expires_at"]);
-        $this->confirmed_at = Util::parseZuluTimeString($chargeObj["confirmed_at"]);
-        $this->checkout = (array)$chargeObj["checkout"];
+        if(isset($chargeObj["confirmed_at"]))
+            $this->confirmed_at = Util::parseZuluTimeString($chargeObj["confirmed_at"]);
+        if(isset($chargeObj["checkout"]))
+            $this->checkout = (array)$chargeObj["checkout"];
         $this->metadata = (array)$chargeObj["metadata"];
         $this->pricing_type = $chargeObj["pricing_type"];
         $this->addresses = $chargeObj["addresses"];
 
-        if(!is_null($chargeObj["timeline"])){
+        if(isset($chargeObj["timeline"])){
             $this->timeline = [];
             foreach ($chargeObj["timeline"] as $statusObj){
                 $this->timeline[] = [
@@ -142,14 +146,14 @@ class ChargeResource
             }
         }
 
-        if(!is_null($chargeObj["pricing"])){
+        if(isset($chargeObj["pricing"])){
             $this->pricing = [];
             foreach ($chargeObj["pricing"] as $name => $pricingObj){
                 $this->pricing[$name] = new Money($pricingObj["amount"], $pricingObj["currency"]);
             }
         }
 
-        if(!is_null($chargeObj["payments"])){
+        if(isset($chargeObj["payments"])){
             $this->payments = [];
             foreach ($chargeObj["payments"] as $paymentObj){
                 $this->payments[] = new Payment($paymentObj);
