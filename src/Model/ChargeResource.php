@@ -141,7 +141,7 @@ class ChargeResource
                 $this->timeline[] = [
                     "time" => Util::parseZuluTimeString($statusObj["time"]),
                     "status" => $statusObj["status"],
-                    "context" => $statusObj["context"],
+                    "context" => isset($statusObj["context"]) ? $statusObj["context"] : null,
                 ];
             }
         }
