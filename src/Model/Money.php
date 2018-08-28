@@ -32,7 +32,7 @@ class Money {
      * @param string $amount
      * @param string $currency
      */
-    public function __construct($amount, $currency)
+    public function __construct($amount = null, $currency = null)
     {
         $this->amount = $amount;
         $this->currency = $currency;
