@@ -14,7 +14,7 @@ class Util
         if(is_null($timeString))
             return null;
 
-        $dt = \DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $timeString, \DateTimeZone::UTC);
+        $dt = \DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $timeString, new \DateTimeZone("Etc/UTC"));
         if($dt === FALSE)
             return null;
 
