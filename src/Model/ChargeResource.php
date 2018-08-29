@@ -148,7 +148,7 @@ class ChargeResource
             }
         }
 
-        if(isset($chargeObj["pricing"])){
+        if(isset($chargeObj["pricing"]) && $chargeObj["pricing"] !== "nil"){
             $this->pricing = [];
             foreach ($chargeObj["pricing"] as $name => $pricingObj){
                 $this->pricing[$name] = new Money($pricingObj["amount"], $pricingObj["currency"]);
