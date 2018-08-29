@@ -59,6 +59,33 @@ class EventResource
     }
 
     /**
+     * Returns true if this event is of a charge being created
+     * @return bool
+     */
+    public function isCreated()
+    {
+        return $this->getType() === "charge:created";
+    }
+
+    /**
+     * Returns true if this event is of a charge being confirmed complete
+     * @return bool
+     */
+    public function isConfirmed()
+    {
+        return $this->getType() === "charge:confirmed";
+    }
+
+    /**
+     * Returns true if this event is of a charge being marked as failed
+     * @return bool
+     */
+    public function isFailed()
+    {
+        return $this->getType() === "charge:failed";
+    }
+
+    /**
      * @return string
      */
     public function getId()

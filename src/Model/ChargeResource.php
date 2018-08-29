@@ -125,8 +125,10 @@ class ChargeResource
         if(isset($chargeObj["logo_url"]))
             $this->logo_url = $chargeObj["logo_url"];
         $this->hosted_url = $chargeObj["hosted_url"];
-        $this->created_at = Util::parseZuluTimeString($chargeObj["created_at"]);
-        $this->expires_at = Util::parseZuluTimeString($chargeObj["expires_at"]);
+        if(isset($chargeObj["created_at"]))
+            $this->created_at = Util::parseZuluTimeString($chargeObj["created_at"]);
+        if(isset($chargeObj["expires_at"]))
+            $this->expires_at = Util::parseZuluTimeString($chargeObj["expires_at"]);
         if(isset($chargeObj["confirmed_at"]))
             $this->confirmed_at = Util::parseZuluTimeString($chargeObj["confirmed_at"]);
         if(isset($chargeObj["checkout"]))
@@ -162,7 +164,7 @@ class ChargeResource
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -202,7 +204,7 @@ class ChargeResource
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLogoUrl()
     {
@@ -218,7 +220,7 @@ class ChargeResource
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt()
     {
@@ -226,7 +228,7 @@ class ChargeResource
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getExpiresAt()
     {
@@ -234,7 +236,7 @@ class ChargeResource
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getConfirmedAt()
     {
